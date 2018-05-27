@@ -20,8 +20,14 @@ linea=leer_lista.readlines()
 #Abrimos el archivo que almacena la configuración del kakuro.
 leer_config=open("kakuro2018configuracion.txt","r")
 linea_c=leer_config.readlines()
+
+MultiNivel=False
+
 for x in linea_c:
     if x=="Dificultad = Easy\n":
+        dificult="Easy"
+    elif x=="Dificultad = Multinivel\n":
+        MultiNivel=True
         dificult="Easy"
     elif x=="Dificultad = Medium\n":
         dificult="Medium"
@@ -2226,19 +2232,19 @@ def kakuro():
     Caja_nombre.place(x=745,y=416)
     
     #Colocar una etiquta que le indica al usuario en que dificultad esta jugando.
-    if dificult=="Easy":
+    if dificult=="Easy" or dificult=="Multinivel":
         Neurona=Label(pantalla,text="Nivel: 1 Neurona",bg="Black",fg="White",
-                     font=("Arial",15)).place(x=550,y=450)
+                     font=("Arial",15))
     elif dificult=="Medium":
         Neurona=Label(pantalla,text="Nivel: 2 Neuronas",bg="Black",fg="White",
-                     font=("Arial",15)).place(x=550,y=450)
+                     font=("Arial",15))
     elif dificult=="Hard":
         Neurona=Label(pantalla,text="Nivel: 3 Neuronas",bg="Black",fg="White",
-                     font=("Arial",15)).place(x=550,y=450)
-
-    #Solamente crear los botones del tablero sin colocarles valores ni posiciones.
+                     font=("Arial",15))
+    Neurona.place(x=550,y=450)
+    
 def crear_botones():
-    """Función para crear los botones"""
+    """Función para crear los botones sin colocarlos en el tablero"""
     global cuadroA1
     cuadroA1=Button(pantalla,bg="Black",fg="White",justify="center")
     global cuadroA2
