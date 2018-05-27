@@ -1,0 +1,2 @@
+# Mejora
+Mejora del kakuro
